@@ -1,4 +1,4 @@
-/node_modules
+**/node_modules
 /bower_components
 /web
 /themes
@@ -11,5 +11,3 @@
 hybrid/plugins/*
 !hybrid/plugins/fetch.json
 
-.DS_Store
-Thumbs.db
