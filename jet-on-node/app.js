@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var APP_VERSION = "0.0.3";
+var APP_VERSION = "0.0.4";
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
