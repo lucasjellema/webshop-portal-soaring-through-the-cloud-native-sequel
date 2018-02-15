@@ -17,6 +17,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/about', function (req, res) {
+  var about ={
+    "about" : "about operation",
+    "PRODUCT_PORTAL_URL" : port.PRODUCT_PORTAL_URL
+    ,"APP_VERSION ": APP_VERSION 
+  }
+  res.json( about);
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -35,15 +44,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//PRODUCT_PORTAL_URL
 
-app.get('/about', function (req, res, next) {
-  var about ={
-    "about" : "about operation",
-    "PRODUCT_PORTAL_URL" : port.PRODUCT_PORTAL_URL
-    ,"APP_VERSION ": APP_VERSION 
-  }
-  res.json( about);
-})
 
 module.exports = app;
