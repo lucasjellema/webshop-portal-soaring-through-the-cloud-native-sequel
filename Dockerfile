@@ -33,5 +33,7 @@ RUN apk update && apk upgrade &&  apk add --no-cache bash git openssh
 #COPY accs-hello-world/target/accs-hello-world.zip .
 #COPY accs-hello-world/deployment.json .
 
+COPY build-app.sh .
+
 
 CMD ["/bin/sh"]
