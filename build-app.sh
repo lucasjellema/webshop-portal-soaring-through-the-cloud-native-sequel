@@ -14,6 +14,12 @@ cd jet-on-node
 wait
 npm install
 wait
-zip -r webshop-portal-soaring-through-the-cloud-native-sequel.zip .
+zip -r webshop.zip .
+wait
+cd jet-on-node
+wait
+cd /oracle-cloud-psm-cli/webshop-portal-soaring-through-the-cloud-native-sequel/jet-on-node
+
+psm accs push -n SoaringWebshopPortal -r node -s hourly -d deployment.json -p webshop.zip
 
 
