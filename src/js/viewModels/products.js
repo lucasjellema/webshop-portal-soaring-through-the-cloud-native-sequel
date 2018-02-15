@@ -6,10 +6,40 @@
  * Your Products ViewModel code goes here
  */
 define(['ojs/ojcore', 'knockout', 'jquery'],
- function(oj, ko, $) {
-  
+  function (oj, ko, $) {
+
     function ProductsViewModel() {
       var self = this;
+
+      self.init = function () {
+        window.addEventListener("message", function (event) {
+          console.log("Parent receives message from iframe " + event);
+          console.log("Payload =  " + JSON.stringify(event.data));
+          //sendMessageFromJetToServer(event.data);
+        },
+          false);
+      }
+      $(document).ready(function () { self.init(); })
+
+      self.notifyIframe = function (message) {
+        //productsIframe
+        var iframe = $("#productsIframe") //.css("border", "3px solid red")
+        var win = iframe[0].contentWindow;
+        var targetOrigin = '*';
+        win.postMessage(message, targetOrigin);
+      }
+
+      self.informIframe = function () {
+        var timeEvent = {
+          "eventType": "timeEvent"
+          , "payload": {
+            "currentTimeString": new Date()
+            , "sender": "embedding application at " + window.location.hostname
+          }
+        }
+        self.notifyIframe(timeEvent)
+
+      }
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additional available methods.
 
@@ -24,7 +54,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
        * @return {Promise|undefined} - If the callback returns a Promise, the next phase (attaching DOM) will be delayed until
        * the promise is resolved
        */
-      self.handleActivated = function(info) {
+      self.handleActivated = function (info) {
         // Implement if needed
       };
 
@@ -37,7 +67,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
        * @param {Function} info.valueAccessor - The binding's value accessor.
        * @param {boolean} info.fromCache - A boolean indicating whether the module was retrieved from cache.
        */
-      self.handleAttached = function(info) {
+      self.handleAttached = function (info) {
         // Implement if needed
       };
 
@@ -50,7 +80,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
        * @param {Node} info.element - DOM element or where the binding is attached. This may be a 'virtual' element (comment node).
        * @param {Function} info.valueAccessor - The binding's value accessor.
        */
-      self.handleBindingsApplied = function(info) {
+      self.handleBindingsApplied = function (info) {
         // Implement if needed
       };
 
@@ -62,7 +92,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
        * @param {Function} info.valueAccessor - The binding's value accessor.
        * @param {Array} info.cachedNodes - An Array containing cached nodes for the View if the cache is enabled.
        */
-      self.handleDetached = function(info) {
+      self.handleDetached = function (info) {
         // Implement if needed
       };
     }
