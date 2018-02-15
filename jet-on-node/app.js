@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var APP_VERSION = "0.0.2";
+var APP_VERSION = "0.0.3";
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -20,7 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/about', function (req, res) {
   var about ={
     "about" : "about operation",
-    "PRODUCT_PORTAL_URL" : port.PRODUCT_PORTAL_URL
+    "PORT" : process.env.PORT,
+    "PRODUCT_PORTAL_URL" : process.env.PRODUCT_PORTAL_URL
     ,"APP_VERSION ": APP_VERSION 
   }
   res.json( about);
