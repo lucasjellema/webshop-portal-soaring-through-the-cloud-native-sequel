@@ -3,8 +3,16 @@
  The Universal Permissive License (UPL), Version 1.0
  -->
 <div class="oj-hybrid-padding">
-  <h1>Customers Content Area</h1>
+  <h1>Customers Area for Logging in</h1>
   <div>
-      To change the content of this section, you will make edits to the customers.html file located in the /js/views folder.
+    <oj-label for="username-input">Type username</oj-label>
+    <oj-input-text id="username-input" value="{{username}}"></oj-input-text>
+
+    <br/>
+    <oj-label for="password">Type Password</oj-label>
+    <oj-input-password id="password" value="{{password}}">
+    </oj-input-password>
+    <br/>
+    <oj-button id='loginButton' on-click='[[loginButtonClick]]'>Login</oj-button>
   </div>
 </div>

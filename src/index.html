@@ -47,10 +47,11 @@
   <body class="oj-web-applayout-body">
     <!-- Template for rendering navigation items -->
     <script type="text/html" id="navTemplate">
-      <li><a href="#">
-        <span data-bind="css: $data['iconClass']"></span>
-        <!-- ko text: $data['name'] --> <!--/ko-->
-      </a></li>
+      
+      <li data-bind="visible: (!$data['loggedInOnly']|| $root.userLoggedIn() =='Y')"><a href="#">
+          <span data-bind="css: $data['iconClass']"></span>
+          <!-- ko text: $data['name'] --> <!--/ko-->
+        </a></li> 
     </script>
 
     <div id="globalBody" class="oj-web-applayout-page">
@@ -69,14 +70,19 @@
           <div class="oj-flex-bar-end">
             <!-- Responsive Toolbar -->
             <oj-toolbar>
+              Shopping Basket
+              <div role="img" class="bulletlist" title="background image"></div> 
+              <img src='css/images/shopbasket.png' class='iconbtnintext' data-bind="click: enterShopbasket"
+              title="Your Shopping Basket" width="25px"  />
               <oj-menu-button id="userMenu" display="[[smScreen() ? 'icons' : 'all']]" chroming="half">
                 <span data-bind="text: userLogin"></span>
                 <span slot="endIcon" data-bind="css: smScreen() ? 'oj-icon demo-appheader-avatar' : 'oj-component-icon oj-button-menu-dropdown-icon'"></span>
-                <oj-menu id="menu1" slot="menu" style="display:none">
-                  <oj-option id="pref" value="pref">Preferences</oj-option>
+                <oj-menu id="menu1" slot="menu" style="display:none" on-oj-action="[[menuItemAction]]">
+<!--                  <oj-option id="pref" value="pref">Preferences</oj-option>-->
                   <oj-option id="help" value="help">Help</oj-option>
                   <oj-option id="about" value="about">About</oj-option>
-                  <oj-option id="out" value="out">Sign Out</oj-option>
+                  <oj-option  disabled="[[userLoggedIn =='Y']]"  id="sign" value="sign"> <span data-bind="text: (userLoggedIn() =='Y'?'Sign Out':'Sign In/Sign Up')"></span></oj-option>
+                 
                 </oj-menu>
               </oj-menu-button>
             </oj-toolbar>
