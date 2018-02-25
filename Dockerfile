@@ -21,6 +21,8 @@ RUN curl -X GET -u $USERNAME:$PASSWORD -H X-ID-TENANT-NAME:$IDENTITY_DOMAIN http
 	pip3 install -U psmcli.zip && \
 	echo -e "$PSM_USERNAME\n$PSM_PASSWORD\n$PSM_PASSWORD\n$IDENTITY_DOMAIN\n$PSM_REGION\n$PSM_OUTPUT" | psm setup
 
+COPY psm-setup-payload.json
+RUN psm setup -c psm-setup-payload.json
 
 RUN apk add --update nodejs nodejs-npm
 RUN apk add --update zip
@@ -29,11 +31,6 @@ RUN npm install -g @oracle/ojet-cli
 
 RUN apk update && apk upgrade &&  apk add --no-cache bash git openssh
 
-
-#COPY accs-hello-world/target/accs-hello-world.zip .
-#COPY accs-hello-world/deployment.json .
-
 COPY build-app.sh .
-
 
 CMD ["/bin/sh"]

@@ -1,0 +1,7 @@
+{ 
+    "username":"your.clouduser@somedomain.nl",
+    "password":"your cloud user's password ",
+    "identityDomain":"the-oraclecloud-identity-domain",
+    "region":"us-or-other",
+    "outputFormat":"json"
+}
