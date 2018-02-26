@@ -12,22 +12,41 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
       var self = this;
 
       self.init = function () {
+
+
         window.addEventListener("message", function (event) {
           console.log("Parent receives message from iframe " + event);
           console.log("Payload =  " + JSON.stringify(event.data));
-          //sendMessageFromJetToServer(event.data);
+          if (event.data.childHasLoaded) {
+            self.sendGlobalContext();
+          }
         },
           false);
-      }
+      }//init
       $(document).ready(function () { self.init(); })
+      self.sendGlobalContext = function () {
+        var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
+
+        var globalContext = { "userName": rootViewModel.userLogin() }
+        self.notifyIframe({
+          "eventType": "globalContext"
+          , "payload": { globalContext }
+        })
+
+      }
 
       self.notifyIframe = function (message) {
         //productsIframe
         var iframe = $("#productsIframe") //.css("border", "3px solid red")
+        if (iframe && iframe[0] ) {
         var win = iframe[0].contentWindow;
         var targetOrigin = '*';
         win.postMessage(message, targetOrigin);
+        } else {
+          console.log("Could not send message to iframe at this moment")
+        }
       }
+
 
       self.informIframe = function () {
         var timeEvent = {
