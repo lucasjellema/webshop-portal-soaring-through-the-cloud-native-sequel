@@ -30,14 +30,14 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
         var globalContext = { "userName": rootViewModel.userLogin() }
         self.notifyIframe({
           "eventType": "globalContext"
-          , "payload": { globalContext }
+          , "payload": { "globalContext": globalContext }
         })
 
       }
 
       self.notifyIframe = function (message) {
         //productsIframe
-        var iframe = $("#productsIframe") //.css("border", "3px solid red")
+        var iframe = $("#productsIframe") 
         if (iframe && iframe[0] ) {
         var win = iframe[0].contentWindow;
         var targetOrigin = '*';
