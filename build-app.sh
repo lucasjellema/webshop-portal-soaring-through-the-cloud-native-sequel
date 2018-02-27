@@ -6,7 +6,9 @@ wait
 
 npm install
 wait
-ojet build --release
+ojet build 
+# this line produced an error on uglifying one of the files
+#ojet build  --release
 wait
 cp -a ./web/. ./jet-on-node/public
 wait
@@ -15,8 +17,6 @@ wait
 npm install
 wait
 zip -r webshop.zip .
-wait
-cd jet-on-node
 wait
 cd /oracle-cloud-psm-cli/webshop-portal-soaring-through-the-cloud-native-sequel/jet-on-node
 

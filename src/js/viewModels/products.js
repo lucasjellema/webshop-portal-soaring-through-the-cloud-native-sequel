@@ -30,22 +30,14 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
         var globalContext = { "userName": rootViewModel.userLogin() }
         self.notifyIframe({
           "eventType": "globalContext"
-<<<<<<< HEAD
           , "payload": { "globalContext": globalContext }
-=======
-          , "payload": { globalContext }
->>>>>>> 3185799b68d6748a0cf41b276fd88ad876dfb42d
         })
 
       }
 
       self.notifyIframe = function (message) {
         //productsIframe
-<<<<<<< HEAD
         var iframe = $("#productsIframe") 
-=======
-        var iframe = $("#productsIframe") //.css("border", "3px solid red")
->>>>>>> 3185799b68d6748a0cf41b276fd88ad876dfb42d
         if (iframe && iframe[0] ) {
         var win = iframe[0].contentWindow;
         var targetOrigin = '*';
