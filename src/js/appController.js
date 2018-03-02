@@ -28,6 +28,20 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
 
       self.globalContext = { "userName": "Not yet logged in" }
 
+      self.addProductToBasket = function(selectedProduct) {
+        if (self.globalContext.basket==null) {
+          self.globalContext.basket ={}
+        }
+        if (self.globalContext.basket[selectedProduct]==null) {
+          self.globalContext.basket[selectedProduct] = 1;
+        } else {
+          self.globalContext.basket[selectedProduct] =self.globalContext.basket[selectedProduct] +1;
+        }
+        console.log("New composition of shopping basket: "+JSON.stringify(self.globalContext.basket))
+        self.basketTitle("Your Shopping Basket: "+JSON.stringify(self.globalContext.basket))
+      }    
+
+
       self.sendGlobalContextToIFrame = function (iframe) {
         self.notifyIframe(iframe, {
           "eventType": "globalContext"
@@ -85,6 +99,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
       // Header
       // Application Name used in Branding Area
       self.appName = ko.observable("Soaring through the Clouds Webshop Portal");
+      self.basketTitle = ko.observable("Your shopping basket");
       // User Info used in Global Navigation area
       self.userLogin = ko.observable("Not yet logged in");
       self.userLoggedIn = ko.observable("N");

@@ -71,8 +71,8 @@
             <!-- Responsive Toolbar -->
             <oj-toolbar>             
               <div role="img" class="bulletlist" title="background image"></div> 
-              <img src='css/images/shopbasket.png' class='iconbtnintext' data-bind="click: enterShopbasket"
-              title="Your Shopping Basket" width="25px"  />
+              <img src='css/images/shopbasket.png' class='iconbtnintext' data-bind="attr:{click: enterShopbasket, title: basketTitle}"
+              width="25px"  />
               <oj-menu-button id="userMenu" display="[[smScreen() ? 'icons' : 'all']]" chroming="half">
                 <span data-bind="text: userLogin"></span>
                 <span slot="endIcon" data-bind="css: smScreen() ? 'oj-icon demo-appheader-avatar' : 'oj-component-icon oj-button-menu-dropdown-icon'"></span>

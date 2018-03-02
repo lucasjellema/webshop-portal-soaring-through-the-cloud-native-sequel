@@ -20,9 +20,15 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
           if (event.data.childHasLoaded) {
             self.sendGlobalContext();
           }
+          if (event.data.eventType=="productSelectionEvent") {
+            var selectedProduct = event.data.payload.nameSelectedProduct;
+            console.log("Portal.Products : newly selected product = "+selectedProduct)
+            var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
+            rootViewModel.addProductToBasket(selectedProduct)    
+          }
         },
           false);
-      }//init
+      }//init 
       $(document).ready(function () { self.init(); })
 
       self.sendGlobalContext = function () {
