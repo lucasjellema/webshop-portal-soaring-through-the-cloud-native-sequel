@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var APP_VERSION = "0.0.5";
+var APP_VERSION = "0.0.6";
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -17,15 +17,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.get('/about', function (req, res) {
   var about ={
-    "about" : "about operation",
+    "about" : "about operation on soaring portal backend",
     "PORT" : process.env.PORT,
     "PRODUCT_PORTAL_URL" : process.env.PRODUCT_PORTAL_URL
     ,"APP_VERSION ": APP_VERSION 
   }
   res.json( about);
 })
+
+app.get('/environmentSettings', function (req, res) {
+  var settings ={
+    "PRODUCT_PORTAL_URL" : process.env.PRODUCT_PORTAL_URL
+    ,"CUSTOMER_PORTAL_URL" : "https://soaringwebshopcustomers-a516817.apaas.us2.oraclecloud.com/"
+    ,"APP_VERSION ": APP_VERSION 
+  }
+  res.json( settings);
+})
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

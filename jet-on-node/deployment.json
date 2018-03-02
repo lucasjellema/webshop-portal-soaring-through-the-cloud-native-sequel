@@ -3,4 +3,5 @@
   "instances": 1,
   "environment": {
     "PRODUCT_PORTAL_URL":"https://soaringwebshopproducts-a516817.apaas.us2.oraclecloud.com"
+    ,"CUSTOMERS_PORTAL_URL":"https://soaringwebshopcustomers-a516817.apaas.us2.oraclecloud.com/"
 }}

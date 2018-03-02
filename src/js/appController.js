@@ -10,6 +10,27 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
     function ControllerViewModel() {
       var self = this;
 
+      self.loadEnvironmentSettings = function () {
+
+        console.log(location.hostname)
+        console.log(location.port)
+        console.log(location.protocol)
+        var environmentSettingsURL = '/environmentSettings'
+        if (location.hostname == 'localhost') {
+          environmentSettingsURL = location.protocol + "://" + location.hostname + ":" + "3000" + "/environmentSettings"
+        }
+
+        $.get("http://localhost:3000/environmentSettings", function (data) {
+          console.log("Load was performed." + JSON.stringify(data));
+          console.log("Customer Portal ." + data.CUSTOMER_PORTAL_URL);
+
+        });
+
+      }
+
+      self.init = function () {self.loadEnvironmentSettings()}
+      $(document).ready(function () { self.init(); })
+
       // Media queries for repsonsive layouts
       var smQuery = oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.SM_ONLY);
       self.smScreen = oj.ResponsiveKnockoutUtils.createMediaQueryObservable(smQuery);
@@ -52,9 +73,9 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
       self.userLogin = ko.observable("Not yet logged in");
       self.userLoggedIn = ko.observable("N");
 
-self.enterShopbasket = function(event) {
-  console.log("Show Basket")
-}
+      self.enterShopbasket = function (event) {
+        console.log("Show Basket")
+      }
 
       //menu item handler
       self.menuItemAction = function (event) {
