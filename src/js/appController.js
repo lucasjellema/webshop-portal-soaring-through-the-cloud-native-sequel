@@ -22,24 +22,27 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
           self.PRODUCT_PORTAL_URL = data.PRODUCT_PORTAL_URL || 'http://localhost:8145/'
         });
       }
+      self.globalContext = {}
 
-      self.init = function () { self.loadEnvironmentSettings() }
+      self.init = function () {
+        self.globalContext.userName = "Not yet logged in";
+        self.loadEnvironmentSettings()
+      }
       $(document).ready(function () { self.init(); })
 
-      self.globalContext = { "userName": "Not yet logged in" }
 
-      self.addProductToBasket = function(selectedProduct) {
-        if (self.globalContext.basket==null) {
-          self.globalContext.basket ={}
+      self.addProductToBasket = function (selectedProduct) {
+        if (self.globalContext.basket == null) {
+          self.globalContext.basket = {}
         }
-        if (self.globalContext.basket[selectedProduct]==null) {
+        if (self.globalContext.basket[selectedProduct] == null) {
           self.globalContext.basket[selectedProduct] = 1;
         } else {
-          self.globalContext.basket[selectedProduct] =self.globalContext.basket[selectedProduct] +1;
+          self.globalContext.basket[selectedProduct] = self.globalContext.basket[selectedProduct] + 1;
         }
-        console.log("New composition of shopping basket: "+JSON.stringify(self.globalContext.basket))
-        self.basketTitle("Your Shopping Basket: "+JSON.stringify(self.globalContext.basket))
-      }    
+        console.log("New composition of shopping basket: " + JSON.stringify(self.globalContext.basket))
+        self.basketTitle("Your Shopping Basket: " + JSON.stringify(self.globalContext.basket))
+      }
 
 
       self.sendGlobalContextToIFrame = function (iframe) {
@@ -121,8 +124,8 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
             self.userLogin("Not yet logged in");
             self.userLoggedIn("N");
             oj.Router.rootInstance.go('dashboard');
-            self.globalContext.userName="";
-  
+            self.globalContext.userName = "";
+
           }
 
         }

@@ -28,7 +28,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputtext', 'ojs/ojbutton'],
         window.addEventListener("message", function (event) {
           console.log("Parent (customers.js) receives message from iframe " + event);
           console.log("Payload =  " + JSON.stringify(event.data));
-          if (event.data.eventType='userSignInEvent' && event.data.payload) {
+          if (event.data.eventType=='userSignInEvent' && event.data.payload) {
             var username = event.data.payload.username;
             console.log("log in for user: "+username);
             loginAsUser(username)
