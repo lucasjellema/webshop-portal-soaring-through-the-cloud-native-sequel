@@ -29,6 +29,7 @@ app.get('/about', function (req, res) {
     "about" : "about operation on soaring portal backend",
     "PORT" : process.env.PORT,
     "PRODUCT_PORTAL_URL" : process.env.PRODUCT_PORTAL_URL
+    ,"CUSTOMER_PORTAL_URL" : process.env.CUSTOMERS_PORTAL_URL
     ,"APP_VERSION ": APP_VERSION 
   }
   res.json( about);
@@ -37,7 +38,7 @@ app.get('/about', function (req, res) {
 app.get('/environmentSettings', function (req, res) {
   var settings ={
     "PRODUCT_PORTAL_URL" : process.env.PRODUCT_PORTAL_URL
-    ,"CUSTOMER_PORTAL_URL" : "https://soaringwebshopcustomers-a516817.apaas.us2.oraclecloud.com/"
+    ,"CUSTOMER_PORTAL_URL" : process.env.CUSTOMERS_PORTAL_URL
     ,"APP_VERSION ": APP_VERSION 
   }
   res.json( settings);

@@ -16,5 +16,6 @@
     <oj-button id='loginButton' on-click='[[loginButtonClick]]'>Login</oj-button>
   </div> -->
   <!-- <iframe id="customersIframelocal" src="http://localhost:8147/" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;" scrolling="no" /></div> -->
-  <iframe id="customersIframe" src="https://soaringwebshopcustomers-a516817.apaas.us2.oraclecloud.com/" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;" scrolling="no" /></div>
+  <iframe id="customersIframe" data-bind="attr: {src:  $root.CUSTOMER_PORTAL_URL}" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;" scrolling="no" /></div>
+  
   

@@ -8,8 +8,10 @@
       <span >Inform Iframe</span>
   </oj-button>
   <div>      
-      <iframe id="productsIframe" src="https://soaringwebshopproducts-a516817.apaas.us2.oraclecloud.com/" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;" scrolling="no" />
-      <!--<iframe src="http://localhost:8145/" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;" scrolling="no" />
+     <!-- <iframe id="productsIframe" src="https://soaringwebshopproducts-a516817.apaas.us2.oraclecloud.com/" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;" scrolling="no" />
+      <iframe id="productsIframe" src="http://localhost:8145/" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;" scrolling="no" />
       -->
+      <iframe id="productsIframe" data-bind="attr: {src:  $root.PRODUCT_PORTAL_URL}" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;" scrolling="no" /></div>
+
   </div>
 </div>

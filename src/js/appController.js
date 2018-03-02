@@ -11,21 +11,16 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
       var self = this;
 
       self.loadEnvironmentSettings = function () {
-
-        console.log(location.hostname)
-        console.log(location.port)
-        console.log(location.protocol)
         var environmentSettingsURL = '/environmentSettings'
         if (location.hostname == 'localhost') {
-          environmentSettingsURL = location.protocol + "://" + location.hostname + ":" + "3000" + "/environmentSettings"
+          environmentSettingsURL = location.protocol + "//" + location.hostname + ":" + "3000" + "/environmentSettings"
         }
-
+console.log("environmentSettingsURL:"+environmentSettingsURL)
         $.get(environmentSettingsURL, function (data) {
           console.log("Load was performed." + JSON.stringify(data));
-          console.log("Customer Portal ." + data.CUSTOMER_PORTAL_URL);
-
+          self.CUSTOMER_PORTAL_URL = data.CUSTOMER_PORTAL_URL||'http://localhost:8147/'
+          self.PRODUCT_PORTAL_URL = data.PRODUCT_PORTAL_URL ||'http://localhost:8145/'
         });
-
       }
 
       self.init = function () {self.loadEnvironmentSettings()}
