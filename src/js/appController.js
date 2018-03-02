@@ -15,16 +15,37 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
         if (location.hostname == 'localhost') {
           environmentSettingsURL = location.protocol + "//" + location.hostname + ":" + "3000" + "/environmentSettings"
         }
-console.log("environmentSettingsURL:"+environmentSettingsURL)
+        console.log("environmentSettingsURL:" + environmentSettingsURL)
         $.get(environmentSettingsURL, function (data) {
           console.log("Load was performed." + JSON.stringify(data));
-          self.CUSTOMER_PORTAL_URL = data.CUSTOMER_PORTAL_URL||'http://localhost:8147/'
-          self.PRODUCT_PORTAL_URL = data.PRODUCT_PORTAL_URL ||'http://localhost:8145/'
+          self.CUSTOMER_PORTAL_URL = data.CUSTOMER_PORTAL_URL || 'http://localhost:8147/'
+          self.PRODUCT_PORTAL_URL = data.PRODUCT_PORTAL_URL || 'http://localhost:8145/'
         });
       }
 
-      self.init = function () {self.loadEnvironmentSettings()}
+      self.init = function () { self.loadEnvironmentSettings() }
       $(document).ready(function () { self.init(); })
+
+      self.globalContext = { "userName": "Not yet logged in" }
+
+      self.sendGlobalContextToIFrame = function (iframe) {
+        self.notifyIframe(iframe, {
+          "eventType": "globalContext"
+          , "payload": { "globalContext": self.globalContext }
+        })
+      }
+
+      self.notifyIframe = function (iframe, message) {
+        //productsIframe
+        var iframe = $(iframe)
+        if (iframe && iframe[0]) {
+          var win = iframe[0].contentWindow;
+          var targetOrigin = '*';
+          win.postMessage(message, targetOrigin);
+        } else {
+          console.log("Could not send message to iframe at this moment")
+        }
+      }
 
       // Media queries for repsonsive layouts
       var smQuery = oj.ResponsiveUtils.getFrameworkQuery(oj.ResponsiveUtils.FRAMEWORK_QUERY_KEY.SM_ONLY);
@@ -85,7 +106,8 @@ console.log("environmentSettingsURL:"+environmentSettingsURL)
             self.userLogin("Not yet logged in");
             self.userLoggedIn("N");
             oj.Router.rootInstance.go('dashboard');
-
+            self.globalContext.userName="";
+  
           }
 
         }

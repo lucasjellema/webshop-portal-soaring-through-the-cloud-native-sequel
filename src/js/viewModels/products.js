@@ -24,28 +24,24 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
           false);
       }//init
       $(document).ready(function () { self.init(); })
+
       self.sendGlobalContext = function () {
         var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
-
-        var globalContext = { "userName": rootViewModel.userLogin() }
-        self.notifyIframe({
-          "eventType": "globalContext"
-          , "payload": { "globalContext": globalContext }
-        })
+        rootViewModel.sendGlobalContextToIFrame("#productsIframe")
 
       }
 
-      self.notifyIframe = function (message) {
-        //productsIframe
-        var iframe = $("#productsIframe") 
-        if (iframe && iframe[0] ) {
-        var win = iframe[0].contentWindow;
-        var targetOrigin = '*';
-        win.postMessage(message, targetOrigin);
-        } else {
-          console.log("Could not send message to iframe at this moment")
-        }
-      }
+      // self.notifyIframe = function (message) {
+      //   //productsIframe
+      //   var iframe = $("#productsIframe") 
+      //   if (iframe && iframe[0] ) {
+      //   var win = iframe[0].contentWindow;
+      //   var targetOrigin = '*';
+      //   win.postMessage(message, targetOrigin);
+      //   } else {
+      //     console.log("Could not send message to iframe at this moment")
+      //   }
+      // }
 
 
       self.informIframe = function () {
@@ -56,7 +52,8 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
             , "sender": "embedding application at " + window.location.hostname
           }
         }
-        self.notifyIframe(timeEvent)
+        var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
+        rootViewModel.notifyIframe("#productsIframe", timeEvent)
 
       }
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
