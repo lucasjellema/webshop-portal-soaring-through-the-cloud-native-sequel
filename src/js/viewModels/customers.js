@@ -19,14 +19,38 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputtext', 'ojs/ojbutton'],
 
       self.loginButtonClick = function (event) {
         console.log("Logged in as " + self.username());
-        var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
-        var us = rootViewModel.userLogin;
-        console.log("userbame = " + rootViewModel.userLogin())
-        rootViewModel.userLogin(self.username());
-        rootViewModel.userLoggedIn("Y");
+        loginAsUser(self.username())
         return true;
       }
 
+      function loginAsUser (username) {
+          var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
+          var us = rootViewModel.userLogin;
+          console.log("userbame = " + rootViewModel.userLogin())
+          rootViewModel.userLogin(self.username());
+          rootViewModel.userLoggedIn("Y");
+          return true;
+        }
+      
+      self.init = function () {
+
+
+        window.addEventListener("message", function (event) {
+          console.log("Parent (customers.js) receives message from iframe " + event);
+          console.log("Payload =  " + JSON.stringify(event.data));
+          if (event.data.eventType='userSignInEvent' && event.data.payload) {
+            var username = event.data.payload.username;
+            console.log("log in for user: "+username);
+            self.username(username)
+            loginAsUser(username)
+          }
+          // if (event.data.childHasLoaded) {
+          //   self.sendGlobalContext();
+          // }
+        },
+          false);
+      }//init
+      $(document).ready(function () { self.init(); })
       /**
        * Optional ViewModel method invoked when this ViewModel is about to be
        * used for the View transition.  The application can put data fetch logic

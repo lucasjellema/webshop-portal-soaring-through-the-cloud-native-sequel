@@ -15,7 +15,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 
 
         window.addEventListener("message", function (event) {
-          console.log("Parent receives message from iframe " + event);
+          console.log("Parent (product.js) receives message from iframe " + event);
           console.log("Payload =  " + JSON.stringify(event.data));
           if (event.data.childHasLoaded) {
             self.sendGlobalContext();
