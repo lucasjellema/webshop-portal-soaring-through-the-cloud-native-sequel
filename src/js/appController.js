@@ -20,7 +20,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
           environmentSettingsURL = location.protocol + "://" + location.hostname + ":" + "3000" + "/environmentSettings"
         }
 
-        $.get("http://localhost:3000/environmentSettings", function (data) {
+        $.get(environmentSettingsURL, function (data) {
           console.log("Load was performed." + JSON.stringify(data));
           console.log("Customer Portal ." + data.CUSTOMER_PORTAL_URL);
 
