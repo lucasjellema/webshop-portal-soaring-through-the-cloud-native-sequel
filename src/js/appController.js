@@ -20,7 +20,9 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
           console.log("Load was performed." + JSON.stringify(data));
           self.CUSTOMER_PORTAL_URL = data.CUSTOMER_PORTAL_URL || 'http://localhost:8147/'
           self.PRODUCT_PORTAL_URL = data.PRODUCT_PORTAL_URL || 'http://localhost:8145/'
-        });
+          self.FINANCE_PORTAL_URL = data.FINANCIAL_PORTAL_URL 
+          self.LOYALTY_PORTAL_URL = data.LOYALTY_PORTAL_URL 
+   });
       }
       self.globalContext = {}
 
@@ -74,7 +76,9 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
         'dashboard': { label: 'Dashboard', isDefault: true },
         'products': { label: 'Products' },
         'orders': { label: 'Orders' },
-        'customers': { label: 'Customers' }
+        'customers': { label: 'Customers' },
+        'finance': { label: 'Financial Statements' },
+        'loyalty': { label: 'Loyalty Program' }
       });
       oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
@@ -90,12 +94,21 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
         },
         {
           name: 'Browse Orders', id: 'orders', loggedInOnly: true,
-          iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24'
+          iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-download-icon-24'
         },
         {
           name: 'Your Profile', id: 'customers', loggedInOnly: true,
           iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'
+        },
+        {
+          name: 'Loyalty Status', id: 'loyalty', loggedInOnly: true,
+          iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24'
+        },
+        {
+          name: 'Your Finance', id: 'finance',  loggedInOnly: true,
+          iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-catalog-icon-24'
         }
+
       ];
       self.navDataSource = new oj.ArrayTableDataSource(navData, { idAttribute: 'id' });
 

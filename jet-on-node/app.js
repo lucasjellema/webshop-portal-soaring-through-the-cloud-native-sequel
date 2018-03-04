@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var APP_VERSION = "0.0.6";
+var APP_VERSION = "0.0.7";
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -30,6 +30,8 @@ app.get('/about', function (req, res) {
     "PORT" : process.env.PORT,
     "PRODUCT_PORTAL_URL" : process.env.PRODUCT_PORTAL_URL
     ,"CUSTOMER_PORTAL_URL" : process.env.CUSTOMERS_PORTAL_URL
+    ,"FINANCIAL_PORTAL_URL" : process.env.FINANCIAL_PORTAL_URL
+    ,"LOYALTY_PORTAL_URL" : process.env.LOYALTY_PORTAL_URL
     ,"APP_VERSION ": APP_VERSION 
   }
   res.json( about);
@@ -39,6 +41,8 @@ app.get('/environmentSettings', function (req, res) {
   var settings ={
     "PRODUCT_PORTAL_URL" : process.env.PRODUCT_PORTAL_URL
     ,"CUSTOMER_PORTAL_URL" : process.env.CUSTOMERS_PORTAL_URL
+    ,"FINANCIAL_PORTAL_URL" : process.env.FINANCIAL_PORTAL_URL
+    ,"LOYALTY_PORTAL_URL" : process.env.LOYALTY_PORTAL_URL
     ,"APP_VERSION ": APP_VERSION 
   }
   res.json( settings);

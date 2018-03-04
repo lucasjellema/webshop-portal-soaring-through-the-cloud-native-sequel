@@ -8,7 +8,7 @@
 define(['ojs/ojcore', 'knockout', 'jquery'],
  function(oj, ko, $) {
   
-    function OrdersViewModel() {
+    function FinanceViewModel() {
       var self = this;
      
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
@@ -73,6 +73,6 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-    return new OrdersViewModel();
+    return new FinanceViewModel();
   }
 );
