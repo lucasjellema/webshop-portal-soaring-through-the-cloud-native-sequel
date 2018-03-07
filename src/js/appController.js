@@ -21,6 +21,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
           self.CUSTOMER_PORTAL_URL = data.CUSTOMER_PORTAL_URL || 'http://localhost:8147/'
           self.PRODUCT_PORTAL_URL = data.PRODUCT_PORTAL_URL || 'http://localhost:8145/'
           self.FINANCE_PORTAL_URL = data.FINANCIAL_PORTAL_URL 
+          self.ORDERS_PORTAL_URL = data.ORDERS_PORTAL_URL 
           self.LOYALTY_PORTAL_URL = data.LOYALTY_PORTAL_URL 
    });
       }

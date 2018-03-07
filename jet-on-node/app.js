@@ -31,6 +31,7 @@ app.get('/about', function (req, res) {
     "PRODUCT_PORTAL_URL" : process.env.PRODUCT_PORTAL_URL
     ,"CUSTOMER_PORTAL_URL" : process.env.CUSTOMERS_PORTAL_URL
     ,"FINANCIAL_PORTAL_URL" : process.env.FINANCIAL_PORTAL_URL
+    ,"ORDERS_PORTAL_URL" : process.env.ORDERS_PORTAL_URL
     ,"LOYALTY_PORTAL_URL" : process.env.LOYALTY_PORTAL_URL
     ,"APP_VERSION ": APP_VERSION 
   }
