@@ -20,7 +20,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputtext', 'ojs/ojbutton'],
           //rootViewModel.userLogin(username);
           rootViewModel.userLoggedIn("Y");
           rootViewModel.globalContext.userName=username
-          rootViewModel.globalContext.customer=rootViewModel.customer
+          rootViewModel.globalContext.customer=customer
           return true;
         }
       
