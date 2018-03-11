@@ -127,7 +127,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
 
       //menu item handler
       self.menuItemAction = function (event) {
-        var selectedMenuOption = event.path[0].id
+        var selectedMenuOption = event.target.value||event.path[0].id
         console.log(selectedMenuOption);
         if (selectedMenuOption == "sign") {
           if (self.userLoggedIn() == "N") {
