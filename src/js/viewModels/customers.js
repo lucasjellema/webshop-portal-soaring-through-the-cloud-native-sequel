@@ -14,11 +14,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputtext', 'ojs/ojbutton'],
       // Please reference the ojModule jsDoc for additional available methods.
 
 
-      function loginAsUser (username) {
+      function loginAsUser (username, customer) {
           var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
-          rootViewModel.userLogin(username);
+          rootViewModel.userLogin(customer.title + " " + customer.firstName + " " + customer.lastName);
+          //rootViewModel.userLogin(username);
           rootViewModel.userLoggedIn("Y");
-          rootViewModel.globalContext.userName=rootViewModel.userLogin()
+          rootViewModel.globalContext.userName=username
+          rootViewModel.globalContext.customer=rootViewModel.customer
           return true;
         }
       
@@ -30,8 +32,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputtext', 'ojs/ojbutton'],
           console.log("Payload =  " + JSON.stringify(event.data));
           if (event.data.eventType=='userSignInEvent' && event.data.payload) {
             var username = event.data.payload.username;
+            var customer = event.data.payload.customer;
             console.log("log in for user: "+username);
-            loginAsUser(username)
+            loginAsUser(username, customer)
           }
           if (event.data.childHasLoaded) {
             self.sendGlobalContext();
