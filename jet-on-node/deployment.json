@@ -7,4 +7,5 @@
     ,"CUSTOMERS_PORTAL_URL":"https://soaringwebshopcustomers-a516817.apaas.us2.oraclecloud.com/"
     ,"ORDERS_PORTAL_URL":"http://129.213.125.71:30342/"
     ,"LOYALTY_PORTAL_URL":"https://loyaltywebshop-soaringcloudloyaltyms.eucom-north-1.oraclecloud.com/"
+    ,"FINANCE_PORTAL_URL":"http://129.150.114.134:8088/"
 }}
