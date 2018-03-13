@@ -33,6 +33,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 
       self.sendGlobalContext = function () {
         var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
+        rootViewModel.sendGlobalContextToIFrame("#oldProductsIframe")
         rootViewModel.sendGlobalContextToIFrame("#productsIframe")
 
       }

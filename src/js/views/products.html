@@ -3,12 +3,20 @@
  The Universal Permissive License (UPL), Version 1.0
  -->
 <div class="oj-hybrid-padding">
-  <h1>Browse Product Catalog</h1>
-  <oj-button id='button2' on-click='[[informIframe]]'>
-      <span >Inform Iframe</span>
-  </oj-button>
-  <div>      
-      <iframe id="productsIframe" data-bind="attr: {src:  $root.PRODUCT_PORTAL_URL}" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;" scrolling="no" /></div>
+    <h1>Browse Product Catalog</h1>
+    <oj-button id='button2' on-click='[[informIframe]]'>
+        <span>Inform Iframe</span>
+    </oj-button>
+    <div>
+        <iframe id="productsIframe" data-bind="attr: {src:  $root.PRODUCT_PORTAL_URL}" style="overflow-y : hidden ; height : 800px ; width :  100% ;border-width:0;"
+            scrolling="no" />
+    </div>
+    <div>
+        <iframe id="oldProductsIframe" data-bind="attr: {src:  $root.OLD_PRODUCT_PORTAL_URL}" style="overflow-y : hidden ; height : 400px ; width :  100% ;border-width:0;"
+            scrolling="no" />
+    </div>
 
-  </div>
+</div>
+
+</div>
 </div>
