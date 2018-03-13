@@ -11,6 +11,24 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
     function LoyaltyViewModel() {
       var self = this;
      
+
+
+      self.init = function () {
+
+        window.addEventListener("message", function (event) {
+          if (event.data.childHasLoaded) {
+            self.sendGlobalContext();
+          }
+        },
+          false);
+      }//init
+      $(document).ready(function () { self.init(); })
+
+      self.sendGlobalContext = function () {
+        var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
+        rootViewModel.sendGlobalContextToIFrame("#loyaltyIframe")
+      }
+
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additional available methods.
 
