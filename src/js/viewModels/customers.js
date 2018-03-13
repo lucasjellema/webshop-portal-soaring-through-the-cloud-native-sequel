@@ -20,7 +20,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputtext', 'ojs/ojbutton'],
           //rootViewModel.userLogin(username);
           rootViewModel.userLoggedIn("Y");
           rootViewModel.globalContext.userName=username
+          console.log("Set customer on global context "+customer)
           rootViewModel.globalContext.customer=customer
+          
           return true;
         }
       

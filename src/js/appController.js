@@ -16,13 +16,16 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
           environmentSettingsURL = location.protocol + "//" + location.hostname + ":" + "3000" + "/environmentSettings"
         }
         console.log("environmentSettingsURL:" + environmentSettingsURL)
+        self.CUSTOMER_PORTAL_URL = "https://soaringwebshopcustomers-a516817.apaas.us2.oraclecloud.com/"
+        self.LOYALTY_PORTAL_URL = "https://loyaltywebshop-soaringcloudloyaltyms.eucom-north-1.oraclecloud.com/"
+        self.ORDERS_PORTAL_URL = "http://129.213.125.71:30342/"
         $.get(environmentSettingsURL, function (data) {
           console.log("Load was performed." + JSON.stringify(data));
           self.CUSTOMER_PORTAL_URL = data.CUSTOMER_PORTAL_URL || 'http://localhost:8147/'
           self.PRODUCT_PORTAL_URL = data.PRODUCT_PORTAL_URL || 'http://localhost:8145/'
           self.FINANCE_PORTAL_URL = data.FINANCIAL_PORTAL_URL 
-          self.ORDERS_PORTAL_URL = data.ORDERS_PORTAL_URL 
-          self.LOYALTY_PORTAL_URL = data.LOYALTY_PORTAL_URL 
+          self.ORDERS_PORTAL_URL = data.ORDERS_PORTAL_URL ||"http://129.213.125.71:30342/"
+          self.LOYALTY_PORTAL_URL = data.LOYALTY_PORTAL_URL ||"https://loyaltywebshop-soaringcloudloyaltyms.eucom-north-1.oraclecloud.com/"
    });
       }
       self.globalContext = {}
