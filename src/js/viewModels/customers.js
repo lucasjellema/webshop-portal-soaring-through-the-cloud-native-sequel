@@ -35,6 +35,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputtext', 'ojs/ojbutton'],
           if (event.data.eventType=='userSignInEvent' && event.data.payload) {
             var username = event.data.payload.username;
             var customer = event.data.payload.customer;
+            customer.customerIdentifier = customer._id
             console.log("log in for user: "+username);
             loginAsUser(username, customer)
           }
