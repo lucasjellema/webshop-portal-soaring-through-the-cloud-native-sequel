@@ -17,7 +17,6 @@ var APP_VERSION = "0.0.9";
 exports.init = function (app) {
   console.log("Custom Module has been loaded and is initializing")
 
-  /*
   app.get('/aboutCustom', function (req, res) {
     var about = {
       "about": "about operation on soaring portal backend",
@@ -47,7 +46,7 @@ exports.init = function (app) {
 
 
 
-
+/*
 
   // any request at /js/jet-composites/input-country2
   // should intercepted
