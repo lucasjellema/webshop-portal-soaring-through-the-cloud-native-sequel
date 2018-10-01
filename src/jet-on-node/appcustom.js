@@ -23,7 +23,7 @@ exports.init = function (app) {
       "about": "about operation on soaring portal backend",
       "PORT": process.env.PORT,
       "PRODUCT_PORTAL_URL": process.env.PRODUCT_PORTAL_URL
-      , "CUSTOMER_PORTAL_URL": process.env.CUSTOMERS_PORTAL_URL
+      , "CUSTOMER_PORTAL_URL": process.env.CUSTOMER_PORTAL_URL
       , "FINANCE_PORTAL_URL": process.env.FINANCE_PORTAL_URL
       , "ORDERS_PORTAL_URL": process.env.ORDERS_PORTAL_URL
       , "LOYALTY_PORTAL_URL": process.env.LOYALTY_PORTAL_URL
@@ -36,7 +36,7 @@ exports.init = function (app) {
   app.get('/environmentSettings', function (req, res) {
     var settings = {
       "PRODUCT_PORTAL_URL": process.env.PRODUCT_PORTAL_URL
-      , "CUSTOMER_PORTAL_URL": process.env.CUSTOMERS_PORTAL_URL
+      , "CUSTOMER_PORTAL_URL": process.env.CUSTOMER_PORTAL_URL
       , "FINANCE_PORTAL_URL": process.env.FINANCE_PORTAL_URL
       , "LOYALTY_PORTAL_URL": process.env.LOYALTY_PORTAL_URL
       , "ORDERS_PORTAL_URL": process.env.ORDERS_PORTAL_URL
