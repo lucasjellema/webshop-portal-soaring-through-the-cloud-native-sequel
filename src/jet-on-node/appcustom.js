@@ -10,13 +10,14 @@ const url = require('url');
 const fs = require('fs');
 const request = require('request');
 
-var APP_VERSION = "0.0.9";
+var APP_VERSION = "0.0.11";
 
 
 
 exports.init = function (app) {
-  console.log("Custom Module has been loaded and is initializing")
+  console.log(`Custom Module (version ${APP_VERSION}) has been loaded and is initializing`)
 
+  console.log("Register handler for path /aboutCustom")
   app.get('/aboutCustom', function (req, res) {
     var about = {
       "about": "about operation on soaring portal backend",
@@ -31,6 +32,7 @@ exports.init = function (app) {
     res.json(about);
   })
 
+  console.log("Register handler for path /environmentSettings")
   app.get('/environmentSettings', function (req, res) {
     var settings = {
       "PRODUCT_PORTAL_URL": process.env.PRODUCT_PORTAL_URL
