@@ -18,6 +18,7 @@ appcustom = {}
 appcustom.init = function (app) {
   console.log("Custom Module has been loaded and is initializing")
 
+  /*
   app.get('/aboutCustom', function (req, res) {
     var about = {
       "about": "about operation on soaring portal backend",
@@ -172,7 +173,7 @@ appcustom.init = function (app) {
       });
     });
   }
-
+*/
 
 }
 
