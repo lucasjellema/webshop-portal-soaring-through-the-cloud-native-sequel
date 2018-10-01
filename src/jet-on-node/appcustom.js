@@ -12,7 +12,6 @@ const request = require('request');
 
 var APP_VERSION = "0.0.9";
 
-module.exports = appcustom;
 
 appcustom = {}
 
@@ -176,3 +175,5 @@ appcustom.init = function (app) {
 
 
 }
+
+module.exports = appcustom;
