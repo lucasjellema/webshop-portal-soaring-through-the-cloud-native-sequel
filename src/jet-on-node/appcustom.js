@@ -13,9 +13,8 @@ const request = require('request');
 var APP_VERSION = "0.0.9";
 
 
-appcustom = {}
 
-appcustom.init = function (app) {
+exports.init = function (app) {
   console.log("Custom Module has been loaded and is initializing")
 
   /*
@@ -177,4 +176,3 @@ appcustom.init = function (app) {
 
 }
 
-module.exports = appcustom;
