@@ -1,4 +1,7 @@
-<p style="display:none">Frame source : <span data-bind="text: $root.ORDERS_PORTAL_URL+'orderId='+$root.globalContext.customer.customerIdentifier"></span> )</p>
+<p style="display:none">Frame source : <span data-bind="text: $root.ORDERS_PORTAL_URL+'?orderId='
+    +(($root.globalContext.order && $root.globalContext.order.orderIdentifier) ? $root.globalContext.order.orderIdentifier:'')
+    +'&customerId='
+            +(($root.globalContext.customer && $root.globalContext.customer.customerIdentifier) ? $root.globalContext.customer.customerIdentifier:'')"></span> )</p>
 
 <iframe id="ordersIframe" data-bind="attr: {src:  $root.ORDERS_PORTAL_URL+'?orderId='
 +(($root.globalContext.order && $root.globalContext.order.orderIdentifier) ? $root.globalContext.order.orderIdentifier:'')
