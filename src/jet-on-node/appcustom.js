@@ -10,7 +10,7 @@ const url = require('url');
 const fs = require('fs');
 const request = require('request');
 
-var APP_VERSION = "0.0.11";
+var APP_VERSION = "0.0.12";
 
 var URL_PREFIX =''
 if (process.env.JET_APP_URL_PREFIX) {
@@ -23,7 +23,7 @@ console.log(`App Custom: JET_APP_URL_PREFIX =${URL_PREFIX}`)
 exports.init = function (app) {
   console.log(`Custom Module (version ${APP_VERSION}) has been loaded and is initializing`)
 
-  console.log("Register handler for path /aboutCustom")
+  console.log(`Register handler for path ${URL_PREFIX}/aboutCustom`)
   app.get(URL_PREFIX+'/aboutCustom', function (req, res) {
     var about = {
       "about": "about operation on soaring portal backend",
@@ -38,7 +38,7 @@ exports.init = function (app) {
     res.json(about);
   })
 
-  console.log("Register handler for path /environmentSettings")
+  console.log(`Register handler for path ${URL_PREFIX}/environmentSettings`)
   app.get(URL_PREFIX+'/environmentSettings', function (req, res) {
     var settings = {
       "PRODUCT_PORTAL_URL": process.env.PRODUCT_PORTAL_URL
