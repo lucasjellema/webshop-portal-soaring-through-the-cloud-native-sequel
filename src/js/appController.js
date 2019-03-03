@@ -11,7 +11,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
       var self = this;
 
      self.loadEnvironmentSettings = function () {
-        var environmentSettingsURL = '/soaring/portal/environmentSettings'
+        var environmentSettingsURL = 'environmentSettings' // resource in local backend, the server that served up this static resource to the client
         console.log(location.protocol + "//" + location.hostname + ":" + "3000" + "/environmentSettings")
         if (location.hostname == 'localhost') {
           environmentSettingsURL = location.protocol + "//" + location.hostname + ":" + "3000" + "/environmentSettings"
@@ -33,10 +33,6 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
           self.ORDERS_PORTAL_URL = data.ORDERS_PORTAL_URL || "http://129.213.72.84/orders-ms/ui/"
           self.LOYALTY_PORTAL_URL = data.LOYALTY_PORTAL_URL || "https://soaringwebshoployalty-a516817.apaas.us2.oraclecloud.com/"
         });
-        $.get('environmentSettings', function (data) {
-          console.log(`Load was performed from environmentSettings. ${JSON.stringify(data)}`);
-        }
-        );
      }//loadEnvironmentSettings
         self.globalContext = {}
 
