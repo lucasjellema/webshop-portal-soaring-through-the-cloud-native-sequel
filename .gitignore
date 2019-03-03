@@ -11,3 +11,4 @@
 hybrid/plugins/*
 !hybrid/plugins/fetch.json
 
+/jet-on-node/public

@@ -11,12 +11,13 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
       var self = this;
 
       self.loadEnvironmentSettings = function () {
-        var environmentSettingsURL = '/environmentSettings'
+        var environmentSettingsURL = '/soaring/portal/environmentSettings'
+        console.log(location.protocol + "//" + location.hostname + ":" + "3000" + "/environmentSettings")
         if (location.hostname == 'localhost') {
           environmentSettingsURL = location.protocol + "//" + location.hostname + ":" + "3000" + "/environmentSettings"
         }
         console.log("environmentSettingsURL:" + environmentSettingsURL)
-        self.CUSTOMER_PORTAL_URL = "https://soaringwebshopcustomers-a516817.apaas.us2.oraclecloud.com/"
+        self.CUSTOMER_PORTAL_URL = "http://144.21.67.138:7792"
         self.LOYALTY_PORTAL_URL = "https://soaringwebshoployalty-a516817.apaas.us2.oraclecloud.com/"
         self.ORDERS_PORTAL_URL = "http://129.213.72.84/orders-ms/ui/"
         self.PRODUCT_PORTAL_URL = "https://129.156.113.125:8085/products"
@@ -24,15 +25,18 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
         self.FINANCE_PORTAL_URL ="http://129.150.114.134:8088/"
           
         $.get(environmentSettingsURL, function (data) {
-          console.log("Load was performed." + JSON.stringify(data));
-          self.CUSTOMER_PORTAL_URL = data.CUSTOMER_PORTAL_URL || 'http://localhost:8147/'
+          console.log(`Load was performed from ${environmentSettingsURL}. ${JSON.stringify(data)}`);
+          self.CUSTOMER_PORTAL_URL = data.CUSTOMER_PORTAL_URL || 'http://144.21.67.138:7792'
           self.OLD_PRODUCT_PORTAL_URL = data.OLD_PRODUCT_PORTAL_URL || 'http://localhost:8145/'
           self.PRODUCT_PORTAL_URL = data.PRODUCT_PORTAL_URL || "https://129.156.113.125:8085/products"
           self.FINANCE_PORTAL_URL = data.FINANCE_PORTAL_URL ||"http://129.150.114.134:8088/"
           self.ORDERS_PORTAL_URL = data.ORDERS_PORTAL_URL ||"http://129.213.72.84/orders-ms/ui/"
           self.LOYALTY_PORTAL_URL = data.LOYALTY_PORTAL_URL ||"https://soaringwebshoployalty-a516817.apaas.us2.oraclecloud.com/"
    });
-      }
+   $.get('environmentSettings', function (data) {
+    console.log(`Load was performed from environmentSettings. ${JSON.stringify(data)}`);
+   }
+   );
       self.globalContext = {}
 
       self.init = function () {
