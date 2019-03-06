@@ -14,12 +14,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputtext', 'ojs/ojbutton'],
       // Please reference the ojModule jsDoc for additional available methods.
 
 
-      function loginAsUser (username, customer) {
+      function loginAsUser (username, customer, token) {
           var rootViewModel = ko.dataFor(document.getElementById('globalBody'));
           rootViewModel.userLogin(customer.title + " " + customer.firstName + " " + customer.lastName);
           //rootViewModel.userLogin(username);
           rootViewModel.userLoggedIn("Y");
           rootViewModel.globalContext.userName=username
+          rootViewModel.globalContext.token = token
           console.log("Set customer on global context "+customer)
           rootViewModel.globalContext.customer=customer
           
@@ -35,9 +36,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojinputtext', 'ojs/ojbutton'],
           if (event.data.eventType=='userSignInEvent' && event.data.payload) {
             var username = event.data.payload.username;
             var customer = event.data.payload.customer;
+            var token = event.data.payload.token;
             customer.customerIdentifier = customer._id
             console.log("log in for user: "+username);
-            loginAsUser(username, customer)
+            loginAsUser(username, customer, token)
           }
           if (event.data.childHasLoaded) {
             self.sendGlobalContext();
