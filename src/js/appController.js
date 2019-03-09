@@ -39,7 +39,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
         self.init = function () {
           self.globalContext.userName = "Not yet logged in";
           //// https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
-          self.globalContext.sessionId = Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36)
+          self.globalContext.sessionId = `anonymous_${Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36)}`
           self.loadEnvironmentSettings()
         }
         $(document).ready(function () { self.init(); })
