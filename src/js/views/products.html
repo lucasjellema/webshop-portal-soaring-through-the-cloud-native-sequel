@@ -4,6 +4,11 @@
  -->
 <div class="oj-hybrid-padding">
     <div>
+            <p style="display:none">Frame source : <span data-bind="text: $root.ORDERS_PORTAL_URL+'?orderId='
+                +(($root.globalContext.order && $root.globalContext.order.orderIdentifier) ? $root.globalContext.order.orderIdentifier:'')
+                +'&customerId='
+                        +(($root.globalContext.customer && $root.globalContext.customer.customerIdentifier) ? $root.globalContext.customer.customerIdentifier:'')"></span> )</p>
+            
         <iframe id="productsIframe" data-bind="attr: {src:  $root.PRODUCT_PORTAL_URL+'?customerId='
         +(($root.globalContext.customer && $root.globalContext.customer.customerIdentifier) ? $root.globalContext.customer.customerIdentifier:'')
     }" style="overflow-y : hidden ; height : 600px ; width :  100% ;border-width:0;"
